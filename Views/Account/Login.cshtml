@@ -1,0 +1,63 @@
+﻿@model FYP.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Microsoft.Owin.Security
+
+
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/styles.css" rel="stylesheet" />
+<link href="~/Content/SocialLogin.css" rel="stylesheet" />
+
+
+<div id="loginModal" style="margin-top:52px" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    <br /><br /><br />
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-center">Login</h1>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form col-md-12 center-block", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <br /><br /><br />
+                    <div style="color:red;font-size:x-large">
+                        @Html.ValidationSummary(true)
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-lg", placeholder = "UserName" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" onclick="submit">Sign In</button>
+                        <span><a href="ForgotPassword">Forgot Password?</a></span>
+                    </div>
+                }
+                @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12">
+                    <a href="~/Account/Register" class="btn btn-danger btn-lg btn-block">Sign Up for free</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
