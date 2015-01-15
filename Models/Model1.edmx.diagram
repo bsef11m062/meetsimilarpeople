@@ -11,6 +11,10 @@
         <EntityTypeShape EntityType="Model.group" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.like" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="Model.post" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.ForgotPassword" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.LuceneData" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.OnlineUser" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Model.Search" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
